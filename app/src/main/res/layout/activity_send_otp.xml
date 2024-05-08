@@ -1,0 +1,118 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Auth.OTP.SendOtpActivity">
+
+    <ImageView
+        android:id="@+id/signup_options_img"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_300sdp"
+        android:layout_marginTop="@dimen/double_big_margin"
+        android:src="@drawable/phone_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:text="Phone Number"
+        android:textColor="@color/text_header_dark_color"
+        android:textSize="@dimen/big_text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_options_img" />
+
+    <TextView
+        android:id="@+id/text_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:maxLines="2"
+        android:paddingStart="@dimen/mid_margin"
+        android:paddingEnd="@dimen/mid_margin"
+        android:text="Add your phone number. We'll send you a verification code"
+        android:textAlignment="center"
+        android:textColor="@color/text_header_dark_color"
+        android:textSize="@dimen/mid_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_1" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_2">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_number_input_login_et"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/mid_margin"
+            android:hint="Enter phone number"
+            app:boxStrokeColor="@color/whitey"
+            app:endIconMode="clear_text"
+            app:errorIconTint="@color/main_color_dark"
+            app:hintTextColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:startIconDrawable="@drawable/country_code_egypt"
+            app:startIconTint="@color/main_color_dark">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_number_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="phone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/small_text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_47sdp">
+
+
+            <Button
+                android:id="@+id/send_code_phone_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_47sdp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/mid_margin"
+                android:background="@drawable/button_shape"
+                android:text="Verify"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/send_progress_bar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

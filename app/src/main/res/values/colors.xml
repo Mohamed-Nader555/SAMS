@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">#1E5C96</color>
+    <color name="main_color_dark">#144777</color>
+    <color name="main_color_btn">#0C5A94</color>
+    <color name="text_main_color">#1775BA</color>
+    <color name="text_header_dark_color">#063354</color>
+    <color name="main_color_transparent">#B52585DB</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="full_transparent">#00000000</color>
+    <color name="semi_full_transparent">#80808080</color>
+    <color name="gray">#666666</color>
+    <color name="lite_gray">#E6E4E4</color>
+
+    <color name="whitey">#F3F3F3</color>
+
+</resources>

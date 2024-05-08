@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Auth.Signup.SignupOptionsActivity">
+
+    <ImageView
+        android:id="@+id/signup_options_img"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_300sdp"
+        android:layout_marginTop="@dimen/double_big_margin"
+        android:src="@drawable/signup_options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:text="Choose Option: "
+        android:textColor="@color/text_header_dark_color"
+        android:textSize="@dimen/big_text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_options_img" />
+
+
+    <LinearLayout
+        android:id="@+id/login_btn_container"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_1">
+
+        <Button
+            android:id="@+id/signup_email_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/mid_margin"
+            android:background="@drawable/button_shape"
+            android:text="Sign Up With Email"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/signup_phone_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/mid_margin"
+            android:background="@drawable/button_shape"
+            android:text="Sign Up with phone number"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/signup_google_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/mid_margin"
+            android:background="@drawable/button_shape"
+            android:text="Sign Up with Gmail"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

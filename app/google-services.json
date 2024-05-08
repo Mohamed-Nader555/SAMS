@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1098999832367",
+    "project_id": "sams-5fe54",
+    "storage_bucket": "sams-5fe54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098999832367:android:ff174a7d5884acdbb9cbda",
+        "android_client_info": {
+          "package_name": "com.omar.sams"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098999832367-qciceasecq6p55qloak06rbe32v63k5r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.omar.sams",
+            "certificate_hash": "107f6b140f5f4d5f4f48a087131a351c3304370b"
+          }
+        },
+        {
+          "client_id": "1098999832367-idvru8bimtne8i399thdvoei7ruea427.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCow-yDyJoTPuIMfr2kbsUqZpta1i-ZhDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098999832367-idvru8bimtne8i399thdvoei7ruea427.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
