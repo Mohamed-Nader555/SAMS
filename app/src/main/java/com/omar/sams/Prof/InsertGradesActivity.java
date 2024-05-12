@@ -11,6 +11,6 @@ public class InsertGradesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insert_grades);
+        setContentView(R.layout.activity_insert_grade);
     }
 }
