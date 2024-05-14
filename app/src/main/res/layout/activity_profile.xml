@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ellipse1255" />
+        app:srcCompat="@drawable/ellipse1255"/>
 
     <TextView
         android:id="@+id/textView28"
@@ -29,7 +29,7 @@
         android:textStyle="bold"
         android:translationZ="45dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        app:layout_constraintTop_toBottomOf="@+id/studentYearProfileText" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/full_name_input_et"
@@ -144,7 +144,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/profileImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -154,33 +154,33 @@
         app:srcCompat="@drawable/group3599" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/studentNameProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Omar Khalid"
+        tools:text="Omar Khalid"
         android:textColor="@color/whitey"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView16"
-        app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+        app:layout_constraintEnd_toEndOf="@+id/profileImage"
+        app:layout_constraintStart_toStartOf="@+id/profileImage"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/studentYearProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Year 4"
+        tools:text="Year 4"
         android:textColor="@color/whitey"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView25"
-        app:layout_constraintStart_toStartOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintEnd_toEndOf="@+id/studentNameProfileText"
+        app:layout_constraintStart_toStartOf="@+id/studentNameProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/studentNameProfileText" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/chnagePasswordBtn"
         android:layout_width="365dp"
         android:layout_height="55dp"
         android:layout_marginBottom="76dp"

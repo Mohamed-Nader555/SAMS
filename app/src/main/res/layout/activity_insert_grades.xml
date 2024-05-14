@@ -7,7 +7,7 @@
     tools:context=".Prof.InsertGradesActivity">
 
     <TextView
-        android:id="@+id/textView37"
+        android:id="@+id/gradesGroupNoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView36" />
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/gradesCourseNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -40,7 +40,7 @@
         android:textColor="#FF000000"
         android:textSize="@dimen/_22sdp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView11"
+        app:layout_constraintStart_toEndOf="@+id/gradesProfileImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -77,7 +77,7 @@
         app:layout_constraintStart_toStartOf="@+id/textInputLayout3" />
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/finalGradeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
@@ -86,7 +86,7 @@
         app:srcCompat="@drawable/group3681" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/classWorkGradeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout3"
@@ -95,7 +95,7 @@
         app:srcCompat="@drawable/group3681" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/gradesProfileImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -105,7 +105,7 @@
         app:srcCompat="@drawable/group3686" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/midtermGradeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
@@ -123,9 +123,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.188"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11">
+        app:layout_constraintTop_toBottomOf="@+id/gradesProfileImage">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/midtermGradeET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -151,6 +152,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/finalGradeET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -165,6 +167,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/classWorkGradeET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -175,11 +178,12 @@
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_marginTop="64dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintEnd_toEndOf="@+id/classWorkGradeBtn"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/totalGradesET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -195,10 +199,10 @@
         android:textSize="@dimen/_22sdp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintTop_toBottomOf="@+id/gradesProfileImage" />
 
     <TextView
-        android:id="@+id/textView33"
+        android:id="@+id/gradesStudentNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"

@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/rectangle1837" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/studentDashboardImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -36,15 +36,15 @@
         android:layout_marginBottom="16dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/studentDashboardImage"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/studentDashboardImage"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/rectangle1836" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/studentDashboardNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -63,8 +63,8 @@
         android:text="Here Is Your Activity Today,"
         android:textColor="#E6E4E4"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/studentDashboardNameText"
+        app:layout_constraintTop_toBottomOf="@+id/studentDashboardNameText" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -90,7 +90,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/studentEcontentBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="4dp"
@@ -98,7 +98,7 @@
                     app:srcCompat="@drawable/group3737" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/studentClubsBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="4dp"
@@ -107,7 +107,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/studentContactBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
@@ -135,6 +135,7 @@
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/studentCoursesRV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#144777"
@@ -147,7 +148,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/studentTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -160,19 +161,19 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/studentDayText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SUN"
         android:textColor="#F3F3F3"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6" />
+        app:layout_constraintBottom_toTopOf="@+id/studentDateText"
+        app:layout_constraintEnd_toEndOf="@+id/studentDateText"
+        app:layout_constraintStart_toStartOf="@+id/studentDateText" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/studentDateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="284dp"

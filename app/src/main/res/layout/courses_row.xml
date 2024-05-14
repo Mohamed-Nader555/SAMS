@@ -27,7 +27,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/mealNameText"
+                android:id="@+id/courseNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -39,37 +39,37 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/mealNameText2"
+                android:id="@+id/doctorNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Dr.Heba Sabry"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/mealNameText"
-                app:layout_constraintStart_toStartOf="@+id/mealNameText"
-                app:layout_constraintTop_toBottomOf="@+id/mealNameText" />
+                app:layout_constraintEnd_toEndOf="@+id/courseNameText"
+                app:layout_constraintStart_toStartOf="@+id/courseNameText"
+                app:layout_constraintTop_toBottomOf="@+id/courseNameText" />
 
             <TextView
-                android:id="@+id/mealNameText3"
+                android:id="@+id/courseTimeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="8:00 am"
-                app:layout_constraintEnd_toEndOf="@+id/mealNameText2"
+                app:layout_constraintEnd_toEndOf="@+id/doctorNameText"
                 app:layout_constraintHorizontal_bias="0.512"
-                app:layout_constraintStart_toStartOf="@+id/mealNameText2"
-                app:layout_constraintTop_toBottomOf="@+id/mealNameText2" />
+                app:layout_constraintStart_toStartOf="@+id/doctorNameText"
+                app:layout_constraintTop_toBottomOf="@+id/doctorNameText" />
 
             <TextView
-                android:id="@+id/mealNameText4"
+                android:id="@+id/courseLocationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Room 403"
-                app:layout_constraintEnd_toEndOf="@+id/mealNameText3"
-                app:layout_constraintStart_toStartOf="@+id/mealNameText3"
-                app:layout_constraintTop_toBottomOf="@+id/mealNameText3" />
+                app:layout_constraintEnd_toEndOf="@+id/courseTimeText"
+                app:layout_constraintStart_toStartOf="@+id/courseTimeText"
+                app:layout_constraintTop_toBottomOf="@+id/courseTimeText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
