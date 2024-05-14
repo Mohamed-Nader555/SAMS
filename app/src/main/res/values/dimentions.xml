@@ -10,6 +10,7 @@
     <dimen name="small_text">@dimen/_15sdp</dimen>
     <dimen name="mid_text">@dimen/_16sdp</dimen>
     <dimen name="big_text">@dimen/_22sdp</dimen>
+    <dimen name="double_big_text">@dimen/_25sdp</dimen>
 
     <dimen name="small_item_drawable_padding">@dimen/_8sdp</dimen>
 

@@ -6,22 +6,24 @@ public class CourseDataModel {
 
     String semester;
     String name;
-    String prof;
+    String profName;
     String driveLink;
     String description;
     String notes;
+    String profId;
     ArrayList<GroupDataModel> groups;
 
     public CourseDataModel() {
     }
 
-    public CourseDataModel(String semester, String name, String prof, String driveLink, String description, String notes, ArrayList<GroupDataModel> groups) {
+    public CourseDataModel(String semester, String name, String profName, String driveLink, String description, String notes, String profId, ArrayList<GroupDataModel> groups) {
         this.semester = semester;
         this.name = name;
-        this.prof = prof;
+        this.profName = profName;
         this.driveLink = driveLink;
         this.description = description;
         this.notes = notes;
+        this.profId = profId;
         this.groups = groups;
     }
 
@@ -42,12 +44,12 @@ public class CourseDataModel {
         this.name = name;
     }
 
-    public String getProf() {
-        return prof;
+    public String getProfName() {
+        return profName;
     }
 
-    public void setProf(String prof) {
-        this.prof = prof;
+    public void setProfName(String profName) {
+        this.profName = profName;
     }
 
     public String getDriveLink() {
@@ -72,6 +74,14 @@ public class CourseDataModel {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getProfId() {
+        return profId;
+    }
+
+    public void setProfId(String profId) {
+        this.profId = profId;
     }
 
     public ArrayList<GroupDataModel> getGroups() {

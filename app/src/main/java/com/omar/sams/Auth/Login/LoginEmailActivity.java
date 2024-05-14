@@ -2,11 +2,9 @@ package com.omar.sams.Auth.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,26 +13,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.omar.sams.Hello.HelloActivity;
-import com.omar.sams.Models.ProfessorDataModel;
-import com.omar.sams.Models.StudentDataModel;
-import com.omar.sams.Models.UserDataModel;
+import com.omar.sams.Prof.ProfDashboardActivity;
 import com.omar.sams.R;
+import com.omar.sams.Student.StudentDashboardActivity;
 
 public class LoginEmailActivity extends AppCompatActivity {
 
@@ -132,99 +120,6 @@ public class LoginEmailActivity extends AppCompatActivity {
 
     }
 
-
-    private void FirebaseGoogleAuth(GoogleSignInAccount acct) {
-        //check if the account is null
-        if (acct != null) {
-            AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-            mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        // Toast.makeText(Login.this, "Successful", Toast.LENGTH_SHORT).show();
-                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                        firebaseUser.reload();
-                        emailAddressChecker = firebaseUser.isEmailVerified();
-                        if (emailAddressChecker) {
-                            Toast.makeText(LoginEmailActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
-                            mLoading.dismiss();
-                            GoogleSaveData();
-                            startActivity(new Intent(LoginEmailActivity.this, HelloActivity.class));
-                            finish();
-                        } else {
-                            SendEmailVerificationMessage();
-                        }
-
-                    } else {
-                        Toast.makeText(LoginEmailActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, "onComplete: login" + task.getException().getMessage());
-                        mAuth.signOut();
-                    }
-                }
-            });
-        } else {
-            Toast.makeText(LoginEmailActivity.this, "Account Login failed", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void GoogleSaveData() {
-
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (account != null) {
-            String personName = account.getDisplayName();
-            final String personGivenName = account.getGivenName();
-            final String personFamilyName = account.getFamilyName();
-            final String personEmail = account.getEmail();
-            String personId = account.getId();
-            Uri personPhoto = account.getPhotoUrl();
-            String fullNameEditText = personGivenName + " " + personFamilyName;
-            final String currentUserID = mAuth.getCurrentUser().getUid();
-            mUsersRef = FirebaseDatabase.getInstance().getReference("Users");
-
-            final UserDataModel dataModel = new UserDataModel(currentUserID,
-                    fullNameEditText,
-                    emailEditText.getText().toString(),
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    false,
-                    new ProfessorDataModel(),
-                    new StudentDataModel()
-            );
-
-            mUsersRef.child(currentUserID).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                    if (!snapshot.exists()) {
-                        mUsersRef.child(currentUserID).setValue(dataModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    mLoading.dismiss();
-                                    Log.e(TAG, "onComplete: Done Saving Data for google account !");
-                                } else
-                                    Log.e(TAG, "onComplete: Error on Saving Data " + task.getException().toString());
-
-                            }
-                        });
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-        }
-
-    }
-
-
     private void loginToTheAccount() {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
@@ -238,7 +133,16 @@ public class LoginEmailActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    VerifyEmailAddress();
+
+                    if (email.contains("@sams.edu.eg")) {
+                        Toast.makeText(LoginEmailActivity.this, "Welcome Professor", Toast.LENGTH_SHORT).show();
+                        mLoading.dismiss();
+                        startActivity(new Intent(LoginEmailActivity.this, ProfDashboardActivity.class));
+                        finish();
+                    } else {
+                        VerifyEmailAddress();
+                    }
+
                 } else {
                     String messsage = task.getException().getMessage();
                     Toast.makeText(LoginEmailActivity.this, "Error Occurred: " + messsage, Toast.LENGTH_LONG).show();
@@ -268,9 +172,9 @@ public class LoginEmailActivity extends AppCompatActivity {
 
         if (emailAddressChecker) {
 
-            Toast.makeText(LoginEmailActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginEmailActivity.this, "Welcome Student", Toast.LENGTH_SHORT).show();
             mLoading.dismiss();
-            startActivity(new Intent(LoginEmailActivity.this, HelloActivity.class));
+            startActivity(new Intent(LoginEmailActivity.this, StudentDashboardActivity.class));
             finish();
 
         } else {
