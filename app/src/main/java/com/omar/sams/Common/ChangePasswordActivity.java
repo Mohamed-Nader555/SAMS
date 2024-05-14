@@ -1,8 +1,8 @@
-package com.omar.sams.common;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.omar.sams.Common;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.omar.sams.R;
 

@@ -33,6 +33,8 @@ import com.google.firebase.database.annotations.Nullable;
 import com.omar.sams.Auth.Auth.AuthActivity;
 import com.omar.sams.Auth.OTP.SendOtpActivity;
 import com.omar.sams.Hello.HelloActivity;
+import com.omar.sams.Models.ProfessorDataModel;
+import com.omar.sams.Models.StudentDataModel;
 import com.omar.sams.Models.UserDataModel;
 import com.omar.sams.R;
 import com.omar.sams.Utils.CustomProgress;
@@ -40,9 +42,9 @@ import com.omar.sams.Utils.CustomProgress;
 public class SignupOptionsActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 100;
+    private final CustomProgress mCustomProgress = CustomProgress.getInstance();
     String TAG = "SignupOptionsActivity";
     Button signupEmailBtn, signupPhoneBtn, signupGoogle;
-    private final CustomProgress mCustomProgress = CustomProgress.getInstance();
     private ProgressDialog mLoading;
     private FirebaseAuth mAuth;
     private DatabaseReference mUsersRef;
@@ -185,7 +187,7 @@ public class SignupOptionsActivity extends AppCompatActivity {
             mUsersRef = FirebaseDatabase.getInstance().getReference("Users");
 
 
-            final UserDataModel dataModel = new UserDataModel(currentUserID, fullNameEditText, personEmail, "", "", "", "", false);
+            final UserDataModel dataModel = new UserDataModel(currentUserID, fullNameEditText, personEmail, "", "", "", "", "", false, new ProfessorDataModel(), new StudentDataModel());
 
             mUsersRef.child(currentUserID).addValueEventListener(new ValueEventListener() {
                 @Override

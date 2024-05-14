@@ -199,7 +199,6 @@ public class VerifyOtpActivity extends AppCompatActivity {
     }
 
 
-
     public void setOTPInputs() {
         mCode1.addTextChangedListener(new TextWatcher() {
             @Override

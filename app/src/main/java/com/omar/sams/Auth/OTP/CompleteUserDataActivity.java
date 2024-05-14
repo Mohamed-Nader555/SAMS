@@ -1,46 +1,40 @@
 package com.omar.sams.Auth.OTP;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.omar.sams.Auth.Auth.AuthActivity;
-import com.omar.sams.Auth.Login.LoginEmailActivity;
-import com.omar.sams.Auth.Signup.SignupEmailActivity;
-import com.omar.sams.Auth.Signup.SignupOptionsActivity;
 import com.omar.sams.Hello.HelloActivity;
+import com.omar.sams.Models.ProfessorDataModel;
+import com.omar.sams.Models.StudentDataModel;
 import com.omar.sams.Models.UserDataModel;
 import com.omar.sams.R;
-import com.omar.sams.Utils.AESCrypt;
 
 public class CompleteUserDataActivity extends AppCompatActivity {
 
     private final String TAG = "CompleteUserDataActivity";
     ProgressDialog mLoading;
+    String phoneNumber;
     private TextInputLayout fullNameInputLayout, emailInputLayout, semesterInputLayout;
     private EditText fullNameEditText, emailEditText, semesterEditText;
     private Button continueButton;
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
-    String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +73,6 @@ public class CompleteUserDataActivity extends AppCompatActivity {
     }
 
 
-
     private void handelTextFields() {
         emailEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -102,7 +95,6 @@ public class CompleteUserDataActivity extends AppCompatActivity {
         });
 
 
-
     }
 
 
@@ -118,7 +110,10 @@ public class CompleteUserDataActivity extends AppCompatActivity {
                 "",
                 "",
                 semesterEditText.getText().toString(),
-                false
+                semesterEditText.getText().toString(),
+                false,
+                new ProfessorDataModel(),
+                new StudentDataModel()
         );
 
         UsersRef.child(currentUserID).setValue(dataModel).addOnCompleteListener(new OnCompleteListener() {
@@ -153,11 +148,6 @@ public class CompleteUserDataActivity extends AppCompatActivity {
         }
         return true;
     }
-
-
-
-
-
 
 
     @Override

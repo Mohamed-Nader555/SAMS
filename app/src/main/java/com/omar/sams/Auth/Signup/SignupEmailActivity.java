@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.omar.sams.Auth.Login.LoginEmailActivity;
+import com.omar.sams.Models.ProfessorDataModel;
+import com.omar.sams.Models.StudentDataModel;
 import com.omar.sams.Models.UserDataModel;
 import com.omar.sams.R;
 import com.omar.sams.Utils.AESCrypt;
@@ -175,7 +177,10 @@ public class SignupEmailActivity extends AppCompatActivity {
                 "",
                 "",
                 semesterEditText.getText().toString(),
-                false
+                semesterEditText.getText().toString(),
+                false,
+                new ProfessorDataModel(),
+                new StudentDataModel()
         );
 
         UsersRef.child(currentUserID).setValue(dataModel).addOnCompleteListener(new OnCompleteListener() {

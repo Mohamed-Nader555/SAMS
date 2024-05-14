@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Prof.ProfDashboardActivity">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
@@ -78,8 +79,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3"
             android:layout_margin="2dp"
+            android:layout_weight="0.3"
             android:orientation="vertical">
 
             <LinearLayout
@@ -127,18 +128,18 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Groups"
                 android:textColor="#063354"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"
-                android:text="Groups" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#144777"
-                app:spanCount="2"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
                 tools:listitem="@layout/courses_row" />
 
         </LinearLayout>
@@ -151,9 +152,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:text="9:20 am"
-        android:textStyle="bold"
-        android:textSize="50sp"
         android:textColor="#F3F3F3"
+        android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
@@ -163,9 +164,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SUN"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:textColor="#F3F3F3"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6" />
@@ -176,9 +177,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="284dp"
         android:text="17 DEC"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:textColor="#F3F3F3"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"

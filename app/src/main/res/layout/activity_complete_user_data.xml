@@ -98,8 +98,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/semester_input_et"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

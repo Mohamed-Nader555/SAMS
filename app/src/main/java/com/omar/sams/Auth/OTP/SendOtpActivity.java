@@ -39,9 +39,9 @@ public class SendOtpActivity extends AppCompatActivity {
     ProgressBar mProgressBar;
     Button mSendCodeBtn;
     FirebaseAuth mAuth;
-    private EditText mInputMobile;
     DatabaseReference mUsersRef;
     UserDataModel userData;
+    private EditText mInputMobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,8 +109,6 @@ public class SendOtpActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {

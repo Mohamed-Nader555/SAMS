@@ -31,6 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.omar.sams.Hello.HelloActivity;
+import com.omar.sams.Models.ProfessorDataModel;
+import com.omar.sams.Models.StudentDataModel;
 import com.omar.sams.Models.UserDataModel;
 import com.omar.sams.R;
 
@@ -186,7 +188,10 @@ public class LoginEmailActivity extends AppCompatActivity {
                     "",
                     "",
                     "",
-                    false
+                    "",
+                    false,
+                    new ProfessorDataModel(),
+                    new StudentDataModel()
             );
 
             mUsersRef.child(currentUserID).addValueEventListener(new ValueEventListener() {

@@ -45,7 +45,6 @@
         app:layout_constraintTop_toBottomOf="@id/text_1" />
 
 
-
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="250dp"
@@ -98,7 +97,6 @@
 
 
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

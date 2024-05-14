@@ -125,15 +125,14 @@
             android:id="@+id/login_email_btn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_47sdp"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginEnd="@dimen/big_margin"
-             android:background="@drawable/button_shape"
+            android:background="@drawable/button_shape"
             android:text="Login"
             android:textAllCaps="false"
-            android:layout_gravity="center_vertical"
             android:textSize="@dimen/_16sdp"
-            android:textStyle="bold"
-        />
+            android:textStyle="bold" />
 
 
     </LinearLayout>
