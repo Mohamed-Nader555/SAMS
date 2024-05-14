@@ -66,5 +66,8 @@ dependencies {
     //Firebase Storage
     implementation("com.google.firebase:firebase-storage")
 
+    //Table-RecycleView
+    implementation 'com.github.evrencoskun:TableView:v0.8.9.4'
+
 
 }
