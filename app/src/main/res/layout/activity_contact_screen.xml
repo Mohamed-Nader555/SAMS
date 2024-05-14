@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/facebookBtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Common.ContactScreenActivity">
@@ -41,7 +42,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView21" />
 
     <ImageView
-        android:id="@+id/imageView23"
+        android:id="@+id/locationImage"
         android:layout_width="360dp"
         android:layout_height="320dp"
         android:layout_marginTop="16dp"
@@ -75,7 +76,7 @@
         app:srcCompat="@drawable/facebook" />
 
     <ImageView
-        android:id="@+id/imageView25"
+        android:id="@+id/instgramBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -85,13 +86,13 @@
         app:srcCompat="@drawable/instagram" />
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/linkedinBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView25"
-        app:layout_constraintStart_toEndOf="@+id/imageView25"
-        app:layout_constraintTop_toTopOf="@+id/imageView25"
+        app:layout_constraintBottom_toBottomOf="@+id/instgramBtn"
+        app:layout_constraintStart_toEndOf="@+id/instgramBtn"
+        app:layout_constraintTop_toTopOf="@+id/instgramBtn"
         app:srcCompat="@drawable/linkedin" />
 
     <TextView
@@ -115,8 +116,8 @@
         android:textColor="@color/text_header_dark_color"
         android:textSize="@dimen/_22sdp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imageView23"
-        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
+        app:layout_constraintStart_toStartOf="@+id/locationImage"
+        app:layout_constraintTop_toBottomOf="@+id/locationImage" />
 
     <ImageView
         android:id="@+id/imageView28"
@@ -138,6 +139,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView28">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/contactNumberET"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
