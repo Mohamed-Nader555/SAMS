@@ -20,23 +20,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/numberText"
+            android:id="@+id/attandanceStudentNameText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.02"
+            android:layout_weight="0.5"
             android:gravity="center"
-            android:text="#"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/lectureDateText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.48"
-            android:gravity="center"
-            android:text="Lecture Date"
+            android:text="Student Name"
             android:textColor="@color/black"
             android:textSize="@dimen/_16sdp"
             android:textStyle="bold" />
@@ -44,32 +33,30 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2"
             android:layout_gravity="center"
+            android:layout_weight="0.5"
             android:gravity="center"
-            android:layout_weight="0.48" >
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/presentRadioBtn"
+                android:id="@+id/insertPresentRadioBtn"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-                android:clickable="false"
                 android:gravity="center" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/absentRadioBtn"
+                android:id="@+id/insertAbsentRadioBtn"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                tools:checked="true"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-                android:gravity="center"
-                android:clickable="false"
-                tools:checked="true" />
+                android:gravity="center" />
         </RadioGroup>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
