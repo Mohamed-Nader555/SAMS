@@ -20,9 +20,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.omar.sams.Prof.ProfDashboardActivity;
+import com.omar.sams.Hello.HelloActivity;
 import com.omar.sams.R;
-import com.omar.sams.Student.StudentDashboardActivity;
 
 public class LoginEmailActivity extends AppCompatActivity {
 
@@ -137,7 +136,10 @@ public class LoginEmailActivity extends AppCompatActivity {
                     if (email.contains("@sams.edu.eg")) {
                         Toast.makeText(LoginEmailActivity.this, "Welcome Professor", Toast.LENGTH_SHORT).show();
                         mLoading.dismiss();
-                        startActivity(new Intent(LoginEmailActivity.this, ProfDashboardActivity.class));
+                        Intent helloPageIntent = new Intent(LoginEmailActivity.this, HelloActivity.class);
+                        helloPageIntent.putExtra("isAdmin", true);
+                        helloPageIntent.putExtra("isConnected", true);
+                        startActivity(helloPageIntent);
                         finish();
                     } else {
                         VerifyEmailAddress();
@@ -174,7 +176,10 @@ public class LoginEmailActivity extends AppCompatActivity {
 
             Toast.makeText(LoginEmailActivity.this, "Welcome Student", Toast.LENGTH_SHORT).show();
             mLoading.dismiss();
-            startActivity(new Intent(LoginEmailActivity.this, StudentDashboardActivity.class));
+            Intent helloPageIntent = new Intent(LoginEmailActivity.this, HelloActivity.class);
+            helloPageIntent.putExtra("isAdmin", false);
+            helloPageIntent.putExtra("isConnected", true);
+            startActivity(helloPageIntent);
             finish();
 
         } else {

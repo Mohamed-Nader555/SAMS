@@ -2,7 +2,6 @@ package com.omar.sams.Auth.Signup;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,18 +23,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.Nullable;
 import com.omar.sams.Auth.Auth.AuthActivity;
+import com.omar.sams.Auth.OTP.CompleteUserDataActivity;
 import com.omar.sams.Auth.OTP.SendOtpActivity;
-import com.omar.sams.Hello.HelloActivity;
-import com.omar.sams.Models.ProfessorDataModel;
-import com.omar.sams.Models.StudentDataModel;
-import com.omar.sams.Models.UserDataModel;
 import com.omar.sams.R;
 import com.omar.sams.Utils.CustomProgress;
 
@@ -153,9 +145,26 @@ public class SignupOptionsActivity extends AppCompatActivity {
                         if (emailAddressChecker) {
                             Toast.makeText(SignupOptionsActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
                             mLoading.dismiss();
-                            GoogleSaveData();
-                            startActivity(new Intent(SignupOptionsActivity.this, HelloActivity.class));
-                            finish();
+
+
+                            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+                            if (account != null) {
+                                final String personGivenName = account.getGivenName();
+                                final String personFamilyName = account.getFamilyName();
+                                final String personEmail = account.getEmail();
+                                String fullName = personGivenName + " " + personFamilyName;
+
+                                Intent completeActivity = new Intent(SignupOptionsActivity.this, CompleteUserDataActivity.class);
+                                completeActivity.putExtra("isGoogle", true);
+                                completeActivity.putExtra("userName", fullName);
+                                completeActivity.putExtra("userEmail", personEmail);
+                                startActivity(completeActivity);
+                                finish();
+                            } else {
+                                Toast.makeText(SignupOptionsActivity.this, "There is an error While Sign with Google.", Toast.LENGTH_SHORT).show();
+                            }
+
+
                         } else {
                             SendEmailVerificationMessage();
                         }
@@ -170,53 +179,6 @@ public class SignupOptionsActivity extends AppCompatActivity {
         } else {
             Toast.makeText(SignupOptionsActivity.this, "Account Login failed", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void GoogleSaveData() {
-
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (account != null) {
-            String personName = account.getDisplayName();
-            final String personGivenName = account.getGivenName();
-            final String personFamilyName = account.getFamilyName();
-            final String personEmail = account.getEmail();
-            String personId = account.getId();
-            Uri personPhoto = account.getPhotoUrl();
-            String fullNameEditText = personGivenName + " " + personFamilyName;
-            final String currentUserID = mAuth.getCurrentUser().getUid();
-            mUsersRef = FirebaseDatabase.getInstance().getReference("Users");
-
-
-            final UserDataModel dataModel = new UserDataModel(currentUserID, fullNameEditText, personEmail, "", "", "", "", "", false, new ProfessorDataModel(), new StudentDataModel());
-
-            mUsersRef.child(currentUserID).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                    if (!snapshot.exists()) {
-                        mUsersRef.child(currentUserID).setValue(dataModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    mLoading.dismiss();
-                                    Log.e(TAG, "onComplete: Done Saving Data for google account !");
-                                } else
-                                    Log.e(TAG, "onComplete: Error on Saving Data " + task.getException().toString());
-
-                            }
-                        });
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-        }
-
     }
 
 

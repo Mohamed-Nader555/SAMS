@@ -6,6 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".Student.CoursesInfoActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/main_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/my_order_back_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_back"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:text="Group Info"
+                android:textColor="@color/white"
+                android:textSize="@dimen/big_text"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
     <Button
         android:id="@+id/studentMaterialBtn"
         android:layout_width="300dp"
@@ -42,22 +80,21 @@
     <TextView
         android:id="@+id/studentCourseNameText"
         android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin"
         android:text="Management Information System"
         android:textColor="#063354"
         android:textSize="@dimen/_22sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tool_bar" />
 
     <TextView
         android:id="@+id/studentProfNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/tiny_margin"
         android:text="Dr.Heba Sabry"
         android:textColor="#063354"
         android:textSize="@dimen/_20sdp"
@@ -105,23 +142,22 @@
         android:layout_width="360dp"
         android:layout_height="160dp"
         android:layout_marginTop="8dp"
-        android:background="#E6E4E4"
+        android:background="@color/main_color"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Type..."
         android:inputType="textMultiLine"
         android:padding="@dimen/_4sdp"
-        android:textColor="#F3F3F3"
-        android:textSize="@dimen/_14sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/small_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TableLayout
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/tiny_margin"
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/textView15">
@@ -132,32 +168,34 @@
                 android:id="@+id/textView19"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin"
                 android:layout_weight="0.5"
                 android:text="Mid-Term"
                 android:textAlignment="center"
-
                 android:textColor="#E6E4E4"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/small_text" />
 
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin"
                 android:layout_weight="0.25"
                 android:text="Final"
                 android:textAlignment="center"
                 android:textColor="#E6E4E4"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/small_text" />
 
             <TextView
                 android:id="@+id/textView21"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin"
                 android:layout_weight="0.25"
                 android:text="Grade"
                 android:textAlignment="center"
                 android:textColor="#E6E4E4"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/small_text" />
         </TableRow>
 
         <TableRow>
@@ -166,24 +204,26 @@
                 android:id="@+id/courseInfoMidTermGradeText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin"
                 android:layout_weight="0.5"
                 android:text="28"
                 android:textAlignment="center"
                 android:textColor="#FF000000"
 
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/small_text"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/courseInfofFinalGradeText"
+                android:id="@+id/courseInfoFinalGradeText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin"
                 android:layout_weight="0.25"
                 android:text="38"
                 android:textAlignment="center"
                 android:textColor="#FF000000"
 
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/small_text"
                 android:textStyle="bold" />
 
             <TextView
@@ -191,11 +231,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_margin="@dimen/tiny_margin"
                 android:layout_weight="0.25"
                 android:text="A+"
                 android:textAlignment="center"
                 android:textColor="#FF000000"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/small_text"
                 android:textStyle="bold" />
         </TableRow>
 

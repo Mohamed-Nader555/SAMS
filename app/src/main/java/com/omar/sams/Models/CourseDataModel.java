@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class CourseDataModel {
 
+    String courseId;
     String semester;
     String name;
     String profName;
@@ -16,7 +17,8 @@ public class CourseDataModel {
     public CourseDataModel() {
     }
 
-    public CourseDataModel(String semester, String name, String profName, String driveLink, String description, String notes, String profId, ArrayList<GroupDataModel> groups) {
+    public CourseDataModel(String courseId, String semester, String name, String profName, String driveLink, String description, String notes, String profId, ArrayList<GroupDataModel> groups) {
+        this.courseId = courseId;
         this.semester = semester;
         this.name = name;
         this.profName = profName;
@@ -27,6 +29,14 @@ public class CourseDataModel {
         this.groups = groups;
     }
 
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
 
     public String getSemester() {
         return semester;

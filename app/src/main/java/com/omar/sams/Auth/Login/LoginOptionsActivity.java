@@ -34,10 +34,12 @@ import com.omar.sams.Auth.Auth.AuthActivity;
 import com.omar.sams.Auth.OTP.SendOtpActivity;
 import com.omar.sams.Hello.HelloActivity;
 import com.omar.sams.Models.ProfessorDataModel;
-import com.omar.sams.Models.StudentDataModel;
+import com.omar.sams.Models.StudentCoursesDataModel;
 import com.omar.sams.Models.UserDataModel;
 import com.omar.sams.R;
 import com.omar.sams.Utils.CustomProgress;
+
+import java.util.ArrayList;
 
 public class LoginOptionsActivity extends AppCompatActivity {
 
@@ -191,9 +193,7 @@ public class LoginOptionsActivity extends AppCompatActivity {
                     "",
                     "",
                     "",
-                    false,
-                    new ProfessorDataModel(),
-                    new StudentDataModel()
+                    new ArrayList<StudentCoursesDataModel>()
             );
 
             mUsersRef.child(currentUserID).addValueEventListener(new ValueEventListener() {

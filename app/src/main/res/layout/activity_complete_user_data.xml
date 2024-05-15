@@ -30,7 +30,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/double_big_margin"
+        android:layout_marginTop="@dimen/mid_margin"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/signup_btn_container"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/double_big_margin"
             android:layout_marginEnd="@dimen/_20sdp"
             android:hint="Name"
             app:boxStrokeColor="@color/whitey"
@@ -98,33 +97,30 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/semester_input_et"
+        <Spinner
+            android:id="@+id/semester_input_spinner"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/tiny_margin"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:hint="Semester"
             app:boxStrokeColor="@color/whitey"
-            app:endIconMode="clear_text"
-            app:errorIconTint="@color/main_color"
-            app:hintTextColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:startIconDrawable="@drawable/ic_school"
-            app:startIconTint="@color/main_color_dark">
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/semester_et"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:autofillHints="name"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        <Spinner
+            android:id="@+id/group_input_spinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/mid_margin"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:boxStrokeColor="@color/whitey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 

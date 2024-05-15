@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/login_options_img"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_300sdp"
+        android:layout_height="@dimen/_280sdp"
         android:layout_marginTop="@dimen/double_big_margin"
         android:src="@drawable/login_options"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
     <LinearLayout
         android:id="@+id/login_btn_container"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_marginEnd="@dimen/small_margin"
         android:orientation="vertical"
@@ -44,7 +44,7 @@
         <Button
             android:id="@+id/login_email_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_47sdp"
+            android:layout_height="@dimen/button_height_size"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/mid_margin"
             android:background="@drawable/button_shape"
@@ -57,9 +57,8 @@
         <Button
             android:id="@+id/login_phone_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_47sdp"
+            android:layout_height="@dimen/button_height_size"
             android:layout_gravity="center_vertical"
-
             android:layout_margin="@dimen/mid_margin"
             android:background="@drawable/button_shape"
             android:text="Log In with phone number"
@@ -71,7 +70,7 @@
         <Button
             android:id="@+id/login_google_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_47sdp"
+            android:layout_height="@dimen/button_height_size"
             android:layout_gravity="center_vertical"
 
             android:layout_margin="@dimen/mid_margin"

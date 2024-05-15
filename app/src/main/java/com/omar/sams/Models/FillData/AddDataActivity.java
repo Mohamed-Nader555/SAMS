@@ -12,6 +12,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.omar.sams.Models.CourseDataModel;
 import com.omar.sams.Models.GroupDataModel;
+import com.omar.sams.Models.ProfessorDataModel;
+import com.omar.sams.Utils.AESCrypt;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -22,23 +24,31 @@ import java.util.Date;
 public class AddDataActivity extends AppCompatActivity {
 
     String TAG = "AddDataActivity";
-    Date date = new Date();
     DatabaseReference mCoursesRef;
     String courseKey = "";
-    String databaseRef;
+    String coursesDatabaseRef;
+    ArrayList<CourseDataModel> courses;
 
+    DatabaseReference mUserRef;
+    String profKey = "";
+    String profDatabaseRef;
+    ArrayList<ProfessorDataModel> professors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addCourses();
+        // first you need to run only the add courses then make sure that all courses are in the
+        // database, then comment the addCourses() function then uncomment addProfData() and run
+        // do not forget before run to change all the new courseID for each professor
+        //you can use AI studio from google.
+
+        //addCourses();
+        addProfData();
     }
 
-
     private void addCourses() {
-        ArrayList<CourseDataModel> courses = new ArrayList<>();
-
+        courses = new ArrayList<>();
         try {
             courses = fillCoursesData();
         } catch (ParseException e) {
@@ -47,13 +57,13 @@ public class AddDataActivity extends AppCompatActivity {
         }
 
 
-        databaseRef = "Courses";
-        mCoursesRef = FirebaseDatabase.getInstance().getReference(databaseRef);
+        coursesDatabaseRef = "Courses";
+        mCoursesRef = FirebaseDatabase.getInstance().getReference(coursesDatabaseRef);
 
 
         for (CourseDataModel courseDataModel : courses) {
-
             courseKey = mCoursesRef.push().getKey();
+            courseDataModel.setCourseId(courseKey);
             mCoursesRef.child(courseKey).setValue(courseDataModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -122,10 +132,10 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for English
         ArrayList<GroupDataModel> groupsEng3 = new ArrayList<>();
-        groupsEng3.add(new GroupDataModel("Group 1", "R 410", "11 - 1", "Saturday", eng3LecDates));
-        groupsEng3.add(new GroupDataModel("Group 2", "R 411", "9 - 11", "Saturday", eng3LecDates));
-        groupsEng3.add(new GroupDataModel("Group 3", "R 412", "1 - 3", "Saturday", eng3LecDates));
-        groupsEng3.add(new GroupDataModel("Group 4", "R 413", "3 - 5", "Saturday", eng3LecDates));
+        groupsEng3.add(new GroupDataModel("Group 1", "Room 410", "11 - 1", "Saturday", eng3LecDates));
+        groupsEng3.add(new GroupDataModel("Group 2", "Room 411", "9 - 11", "Saturday", eng3LecDates));
+        groupsEng3.add(new GroupDataModel("Group 3", "Room 412", "1 - 3", "Saturday", eng3LecDates));
+        groupsEng3.add(new GroupDataModel("Group 4", "Room 413", "3 - 5", "Saturday", eng3LecDates));
 
         // Info for English
         CourseDataModel courseEng = new CourseDataModel();
@@ -154,10 +164,10 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for Money & Banking
         ArrayList<GroupDataModel> groupsMB = new ArrayList<>();
-        groupsMB.add(new GroupDataModel("Group 1", "R 422", "1 - 3", "Saturday", mbLecDates));
-        groupsMB.add(new GroupDataModel("Group 2", "R 423", "9 - 11", "Saturday", mbLecDates));
-        groupsMB.add(new GroupDataModel("Group 3", "R 424", "11 - 1", "Saturday", mbLecDates));
-        groupsMB.add(new GroupDataModel("Group 4", "R 425", "3 - 5", "Saturday", mbLecDates));
+        groupsMB.add(new GroupDataModel("Group 1", "Room 422", "1 - 3", "Saturday", mbLecDates));
+        groupsMB.add(new GroupDataModel("Group 2", "Room 423", "9 - 11", "Saturday", mbLecDates));
+        groupsMB.add(new GroupDataModel("Group 3", "Room 424", "11 - 1", "Saturday", mbLecDates));
+        groupsMB.add(new GroupDataModel("Group 4", "Room 425", "3 - 5", "Saturday", mbLecDates));
 
         // Info for Money & Banking
         CourseDataModel courseMB = new CourseDataModel();
@@ -186,10 +196,10 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for Business Law
         ArrayList<GroupDataModel> groupsBL = new ArrayList<>();
-        groupsBL.add(new GroupDataModel("Group 1", "R 310", "9 - 11", "Sunday", blLecDates));
-        groupsBL.add(new GroupDataModel("Group 2", "R 311", "11 - 1", "Sunday", blLecDates));
-        groupsBL.add(new GroupDataModel("Group 3", "R 312", "1 - 3", "Sunday", blLecDates));
-        groupsBL.add(new GroupDataModel("Group 4", "R 313", "3 - 5", "Sunday", blLecDates));
+        groupsBL.add(new GroupDataModel("Group 1", "Room 310", "9 - 11", "Sunday", blLecDates));
+        groupsBL.add(new GroupDataModel("Group 2", "Room 311", "11 - 1", "Sunday", blLecDates));
+        groupsBL.add(new GroupDataModel("Group 3", "Room 312", "1 - 3", "Sunday", blLecDates));
+        groupsBL.add(new GroupDataModel("Group 4", "Room 313", "3 - 5", "Sunday", blLecDates));
 
         // Info for Business Law
         CourseDataModel courseBL = new CourseDataModel();
@@ -218,10 +228,10 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for Operation Management
         ArrayList<GroupDataModel> groupsOM = new ArrayList<>();
-        groupsOM.add(new GroupDataModel("Group 1", "R 406", "1 - 3", "Sunday", omLecDates));
-        groupsOM.add(new GroupDataModel("Group 2", "R 407", "9 - 11", "Sunday", omLecDates));
-        groupsOM.add(new GroupDataModel("Group 3", "R 408", "11 - 1", "Sunday", omLecDates));
-        groupsOM.add(new GroupDataModel("Group 4", "R 409", "3 - 5", "Sunday", omLecDates));
+        groupsOM.add(new GroupDataModel("Group 1", "Room 406", "1 - 3", "Sunday", omLecDates));
+        groupsOM.add(new GroupDataModel("Group 2", "Room 407", "9 - 11", "Sunday", omLecDates));
+        groupsOM.add(new GroupDataModel("Group 3", "Room 408", "11 - 1", "Sunday", omLecDates));
+        groupsOM.add(new GroupDataModel("Group 4", "Room 409", "3 - 5", "Sunday", omLecDates));
 
         // Info for Operation Management
         CourseDataModel courseOM = new CourseDataModel();
@@ -250,10 +260,10 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for Principles of Marketing
         ArrayList<GroupDataModel> groupsPOM = new ArrayList<>();
-        groupsPOM.add(new GroupDataModel("Group 1", "R 410", "9 - 12", "Wednesday", pomLecDates));
-        groupsPOM.add(new GroupDataModel("Group 2", "R 411", "1 - 4", "Wednesday", pomLecDates));
-        groupsPOM.add(new GroupDataModel("Group 3", "R 412", "4 - 7", "Wednesday", pomLecDates));
-        groupsPOM.add(new GroupDataModel("Group 4", "R 413", "7 - 10", "Wednesday", pomLecDates));
+        groupsPOM.add(new GroupDataModel("Group 1", "Room 410", "9 - 12", "Wednesday", pomLecDates));
+        groupsPOM.add(new GroupDataModel("Group 2", "Room 411", "1 - 4", "Wednesday", pomLecDates));
+        groupsPOM.add(new GroupDataModel("Group 3", "Room 412", "4 - 7", "Wednesday", pomLecDates));
+        groupsPOM.add(new GroupDataModel("Group 4", "Room 413", "7 - 10", "Wednesday", pomLecDates));
 
         // Info for Principles of Marketing
         CourseDataModel coursePOM = new CourseDataModel();
@@ -346,10 +356,10 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for Principles of Finance
         ArrayList<GroupDataModel> groupsPOF = new ArrayList<>();
-        groupsPOF.add(new GroupDataModel("Group 1", "R 208", "10 - 12", "Sunday", pofLecDates));
-        groupsPOF.add(new GroupDataModel("Group 2", "R 209", "12 - 2", "Sunday", pofLecDates));
-        groupsPOF.add(new GroupDataModel("Group 3", "R 210", "2 - 4", "Sunday", pofLecDates));
-        groupsPOF.add(new GroupDataModel("Group 4", "R 211", "4 - 6", "Sunday", pofLecDates));
+        groupsPOF.add(new GroupDataModel("Group 1", "Room 208", "10 - 12", "Sunday", pofLecDates));
+        groupsPOF.add(new GroupDataModel("Group 2", "Room 209", "12 - 2", "Sunday", pofLecDates));
+        groupsPOF.add(new GroupDataModel("Group 3", "Room 210", "2 - 4", "Sunday", pofLecDates));
+        groupsPOF.add(new GroupDataModel("Group 4", "Room 211", "4 - 6", "Sunday", pofLecDates));
 
         // Info for Principles of Finance
         CourseDataModel coursePOF = new CourseDataModel();
@@ -411,10 +421,10 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for Human Resources Management
         ArrayList<GroupDataModel> groupsHRM = new ArrayList<>();
-        groupsHRM.add(new GroupDataModel("Group 1", "R 105", "3 - 6", "Monday", hrmLecDates));
-        groupsHRM.add(new GroupDataModel("Group 2", "R 106", "6 - 9", "Monday", hrmLecDates));
-        groupsHRM.add(new GroupDataModel("Group 3", "R 107", "9 - 12", "Monday", hrmLecDates));
-        groupsHRM.add(new GroupDataModel("Group 4", "R 108", "12 - 3", "Monday", hrmLecDates));
+        groupsHRM.add(new GroupDataModel("Group 1", "Room 105", "3 - 6", "Monday", hrmLecDates));
+        groupsHRM.add(new GroupDataModel("Group 2", "Room 106", "6 - 9", "Monday", hrmLecDates));
+        groupsHRM.add(new GroupDataModel("Group 3", "Room 107", "9 - 12", "Monday", hrmLecDates));
+        groupsHRM.add(new GroupDataModel("Group 4", "Room 108", "12 - 3", "Monday", hrmLecDates));
 
         // Info for Human Resources Management
         CourseDataModel courseHRM = new CourseDataModel();
@@ -430,9 +440,7 @@ public class AddDataActivity extends AppCompatActivity {
         list.add(courseHRM);
 
 
-
         ////////////////////////////////////////////////////////////another Subject
-
 
 
         // Lecture dates for Enterprise Application
@@ -446,10 +454,10 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for Enterprise Application
         ArrayList<GroupDataModel> groupsEntApp = new ArrayList<>();
-        groupsEntApp.add(new GroupDataModel("Group 1", "R 402", "9 - 11", "Monday", entAppLecDates));
-        groupsEntApp.add(new GroupDataModel("Group 2", "R 402", "11 - 1", "Monday", entAppLecDates));
-        groupsEntApp.add(new GroupDataModel("Group 3", "R 406", "1 - 3", "Monday", entAppLecDates));
-        groupsEntApp.add(new GroupDataModel("Group 4", "R 406", "3 - 5", "Monday", entAppLecDates));
+        groupsEntApp.add(new GroupDataModel("Group 1", "Room 402", "9 - 11", "Monday", entAppLecDates));
+        groupsEntApp.add(new GroupDataModel("Group 2", "Room 402", "11 - 1", "Monday", entAppLecDates));
+        groupsEntApp.add(new GroupDataModel("Group 3", "Room 406", "1 - 3", "Monday", entAppLecDates));
+        groupsEntApp.add(new GroupDataModel("Group 4", "Room 406", "3 - 5", "Monday", entAppLecDates));
 
         // Info for Enterprise Application
         CourseDataModel courseEntApp = new CourseDataModel();
@@ -478,16 +486,16 @@ public class AddDataActivity extends AppCompatActivity {
 
         // Groups for Discrete Math
         ArrayList<GroupDataModel> groupsDM = new ArrayList<>();
-        groupsDM.add(new GroupDataModel("Group 1", "R 305", "12 - 2", "Saturday", dmLecDates));
-        groupsDM.add(new GroupDataModel("Group 2", "R 306", "2 - 4", "Saturday", dmLecDates));
-        groupsDM.add(new GroupDataModel("Group 3", "R 307", "4 - 6", "Saturday", dmLecDates));
-        groupsDM.add(new GroupDataModel("Group 4", "R 308", "6 - 8", "Saturday", dmLecDates));
+        groupsDM.add(new GroupDataModel("Group 1", "Room 305", "12 - 2", "Saturday", dmLecDates));
+        groupsDM.add(new GroupDataModel("Group 2", "Room 306", "2 - 4", "Saturday", dmLecDates));
+        groupsDM.add(new GroupDataModel("Group 3", "Room 307", "4 - 6", "Saturday", dmLecDates));
+        groupsDM.add(new GroupDataModel("Group 4", "Room 308", "6 - 8", "Saturday", dmLecDates));
 
         // Info for Discrete Math
         CourseDataModel courseDM = new CourseDataModel();
         courseDM.setSemester("Fourth Term");
         courseDM.setName("Discrete Math");
-        courseDM.setProfName("Marwa Abd Allah");
+        courseDM.setProfName("Omar Khalid");
         courseDM.setDriveLink("https://drive.google.com/drive/folders/1jDkYI_jeiPXu468Bw9n6Uy7m2QvuhPtj?usp=sharing");
         courseDM.setDescription("A Discrete Math course dives into the mathematics behind computer science, equipping you with tools for counting, logic, and problem-solving in the digital world.");
         courseDM.setNotes("");
@@ -531,9 +539,172 @@ public class AddDataActivity extends AppCompatActivity {
 
 
         return list;
-
-
     }
 
+
+    private void addProfData() {
+        professors = new ArrayList<>();
+
+        professors = fillProfessorsData();
+
+        profDatabaseRef = "Users";
+        mUserRef = FirebaseDatabase.getInstance().getReference(profDatabaseRef);
+
+
+        for (ProfessorDataModel professorDataModel : professors) {
+            profKey = professorDataModel.getProfId();
+            mUserRef.child(profKey).setValue(professorDataModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Log.e(TAG, "Done Adding Professor");
+                    } else {
+                        String message = task.getException().getMessage();
+                        Log.e(TAG, "Error Occurred" + message);
+                    }
+                }
+            });
+        }
+    }
+
+    private ArrayList<ProfessorDataModel> fillProfessorsData() {
+        ArrayList<ProfessorDataModel> list = new ArrayList<>();
+
+
+        String password;
+        try {
+            password = AESCrypt.encrypt("prof@123");
+        } catch (Exception e) {
+            password = "prof@123";
+        }
+
+        // Professor 1
+        ProfessorDataModel prof_1 = new ProfessorDataModel();
+        prof_1.setProfId("YUQ98uIcdlacjnh94kO1VsaEn4T2");
+        prof_1.setName("Marwa Abd Allah");
+        prof_1.setEmail("marwa_abd_allah@sams.edu.eg");
+        prof_1.setPassword(password);
+        prof_1.setCourseId("-NxuY4qFQMQiZJD_DEnx"); // Statistics 2
+        list.add(prof_1);
+
+        // Professor 2
+        ProfessorDataModel prof_2 = new ProfessorDataModel();
+        prof_2.setProfId("kja6oaUyAyc3JLqWrDAJu7GkBky2");
+        prof_2.setName("Ali Bedawy");
+        prof_2.setEmail("ali_bedawy@sams.edu.eg");
+        prof_2.setPassword(password);
+        prof_2.setCourseId("-NxuY4re4P4wOp3sS-ap"); // English 3
+        list.add(prof_2);
+
+        // Professor 3
+        ProfessorDataModel prof_3 = new ProfessorDataModel();
+        prof_3.setProfId("lhT6NuwOGPatdCTnSHPjYNBhlS62");
+        prof_3.setName("Ola Shousha");
+        prof_3.setEmail("ola_shousha@sams.edu.eg");
+        prof_3.setPassword(password);
+        prof_3.setCourseId("-NxuY4sGYOL8cp0waLt6"); // Money & Banking
+        list.add(prof_3);
+
+        // Professor 4
+        ProfessorDataModel prof_4 = new ProfessorDataModel();
+        prof_4.setProfId("d15LObniuWOVfkEGKSnEl9pL1633");
+        prof_4.setName("Mostafa Hassan");
+        prof_4.setEmail("mostafa_hassan@sams.edu.eg");
+        prof_4.setPassword(password);
+        prof_4.setCourseId("-NxuY4sd6so_2oyUq_eA"); // Business Law
+        list.add(prof_4);
+
+        // Professor 5
+        ProfessorDataModel prof_5 = new ProfessorDataModel();
+        prof_5.setProfId("iTPe8EnkYaUNwlfMnYftOrWVDHL2");
+        prof_5.setName("Arwa Mohamed");
+        prof_5.setEmail("arwa_mohamed@sams.edu.eg");
+        prof_5.setPassword(password);
+        prof_5.setCourseId("-NxuY4t3zJ90HwPrbj5v"); // Operation Management
+        list.add(prof_5);
+
+        // Professor 6
+        ProfessorDataModel prof_6 = new ProfessorDataModel();
+        prof_6.setProfId("97DN7JAJpZOv7STYIBr1qV1AaLd2");
+        prof_6.setName("Ahmed Samir");
+        prof_6.setEmail("ahmed_samir@sams.edu.eg");
+        prof_6.setPassword(password);
+        prof_6.setCourseId("-NxuY4tNF4VFzpYMLYDs"); // Principles of Marketing
+        list.add(prof_6);
+
+        // Professor 7
+        ProfessorDataModel prof_7 = new ProfessorDataModel();
+        prof_7.setProfId("PS96elZLVacbXi7dSujg3NbooGG3");
+        prof_7.setName("Heba Sabri");
+        prof_7.setEmail("heba_sabri@sams.edu.eg");
+        prof_7.setPassword(password);
+        prof_7.setCourseId("-NxuY4u-P7PoN8m-cwxG"); // Management Information System
+        list.add(prof_7);
+
+        // Professor 8
+        ProfessorDataModel prof_8 = new ProfessorDataModel();
+        prof_8.setProfId("Px75kWiqzrUMGeZ8m4wUzehTJ1j2");
+        prof_8.setName("Marwa Abd El Aziz");
+        prof_8.setEmail("marwa_abd_el_aziz@sams.edu.eg");
+        prof_8.setPassword(password);
+        prof_8.setCourseId("-NxuY4uHxVu6olVOd322"); // Scientific Research Methods
+        list.add(prof_8);
+
+        // Professor 9
+        ProfessorDataModel prof_9 = new ProfessorDataModel();
+        prof_9.setProfId("y9w9fe97BpOG3QuDY6UmOIdTaQc2");
+        prof_9.setName("Mohamed Sameh");
+        prof_9.setEmail("mohamed_sameh@sams.edu.eg");
+        prof_9.setPassword(password);
+        prof_9.setCourseId("-NxuY4uZM0QOAnZI0wXr"); // Principles of Finance
+        list.add(prof_9);
+
+        // Professor 10
+        ProfessorDataModel prof_10 = new ProfessorDataModel();
+        prof_10.setProfId("S4uLLXRRTze9pemKDy3p6NdH5qX2");
+        prof_10.setName("Ghada Mostafa");
+        prof_10.setEmail("ghada_mostafa@sams.edu.eg");
+        prof_10.setPassword(password);
+        prof_10.setCourseId("-NxuY4uoENSFS3TsveKA"); // Programming
+        list.add(prof_10);
+
+        // Professor 11
+        ProfessorDataModel prof_11 = new ProfessorDataModel();
+        prof_11.setProfId("Jjb0UHgECVb78PV10wDhjNxwAC02");
+        prof_11.setName("Lamia Al Adel");
+        prof_11.setEmail("lamia_al_adel@sams.edu.eg");
+        prof_11.setPassword(password);
+        prof_11.setCourseId("-NxuY4vK_65z5TEaY_bL"); // Enterprise Application
+        list.add(prof_11);
+
+        // Professor 12
+        ProfessorDataModel prof_12 = new ProfessorDataModel();
+        prof_12.setProfId("EiFZSPqfdvMeNuMNXHYDsfq5B7x2");
+        prof_12.setName("Suzan Amen");
+        prof_12.setEmail("suzan_amen@sams.edu.eg");
+        prof_12.setPassword(password);
+        prof_12.setCourseId("-NxuY4vo3Ps9i-wtQ4a1"); // English (4)
+        list.add(prof_12);
+
+        // Professor 13
+        ProfessorDataModel prof_13 = new ProfessorDataModel();
+        prof_13.setProfId("GL9VVq8Y7VcK2lspWK4FUbbTzeZ2");
+        prof_13.setName("Omar Khalid");
+        prof_13.setEmail("omar_khalid@sams.edu.eg");
+        prof_13.setPassword(password);
+        prof_13.setCourseId("-NxuY4vbO1TDy7l2Hr48"); // Discrete Math
+        list.add(prof_13);
+
+        // Professor 14
+        ProfessorDataModel prof_14 = new ProfessorDataModel();
+        prof_14.setProfId("tXcWTQKWtAPJA0VmHaYj8nRNzZ32");
+        prof_14.setName("Fawzi Madkour");
+        prof_14.setEmail("fawzi_madkour@sams.edu.eg");
+        prof_14.setPassword(password);
+        prof_14.setCourseId("-NxuY4v5MwlwZb-yRRNe"); // Human Resources Management
+        list.add(prof_14);
+
+        return list;
+    }
 
 }

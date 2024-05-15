@@ -8,36 +8,33 @@
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="400dp"
-        android:scaleType="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ellipse1255"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ellipse" />
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="86dp"
-        android:text="Full Name:"
+         android:text="Full Name:"
         android:textColor="@color/black"
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
         android:translationZ="45dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentYearProfileText" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/full_name_input_et"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="4dp"
-        android:translationZ="45dp"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height_size"
+         android:translationZ="45dp"
         app:boxStrokeColor="@color/whitey"
         app:boxStrokeErrorColor="@color/main_color_dark"
         app:endIconMode="clear_text"
@@ -45,9 +42,11 @@
         app:errorIconDrawable="@drawable/ic_error"
         app:errorIconTint="@color/main_color"
         app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/big_margin"
         app:layout_constraintStart_toStartOf="@+id/textView28"
         app:layout_constraintTop_toBottomOf="@+id/textView28"
-        app:startIconDrawable="@drawable/ic_email"
+        app:startIconDrawable="@drawable/ic_person"
         app:startIconTint="@color/main_color_dark">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -64,7 +63,7 @@
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/tiny_margin"
         android:text="E-mail:"
         android:textColor="@color/black"
         android:textSize="@dimen/_16sdp"
@@ -75,10 +74,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_input_et"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="4dp"
-        android:translationZ="45dp"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height_size"
+         android:translationZ="45dp"
         app:boxStrokeColor="@color/whitey"
         app:boxStrokeErrorColor="@color/main_color_dark"
         app:endIconMode="clear_text"
@@ -86,6 +84,8 @@
         app:errorIconDrawable="@drawable/ic_error"
         app:errorIconTint="@color/main_color"
         app:hintTextColor="@color/black"
+        android:layout_marginEnd="@dimen/big_margin"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView29"
         app:layout_constraintTop_toBottomOf="@+id/textView29"
         app:startIconDrawable="@drawable/ic_email"
@@ -105,42 +105,53 @@
         android:id="@+id/textView38"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Phone Number:"
+        android:layout_marginTop="@dimen/tiny_margin"
+        android:text="Semester:"
         android:textColor="@color/black"
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView29"
         app:layout_constraintTop_toBottomOf="@+id/email_input_et" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phone_number_input_login_et"
+    <Spinner
+        android:id="@+id/semester_input_spinner"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="4dp"
-        android:translationZ="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height_size"
+        android:layout_marginStart="@dimen/_20sdp"
+         android:layout_marginEnd="@dimen/big_margin"
         app:boxStrokeColor="@color/whitey"
-        app:boxStrokeErrorColor="@color/main_color_dark"
-        app:endIconMode="clear_text"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@drawable/ic_error"
-        app:errorIconTint="@color/main_color"
-        app:hintTextColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/textView38"
-        app:layout_constraintTop_toBottomOf="@+id/textView38"
-        app:startIconDrawable="@drawable/ic_lock"
-        app:startIconTint="@color/main_color_dark">
+        app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phone_number_et"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:autofillHints="emailAddress"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/textView88"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height_size"
+        android:layout_marginTop="16dp"
+        android:text="Group:"
+        android:textColor="@color/black"
+        android:layout_margin="@dimen/tiny_margin"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView29"
+        app:layout_constraintTop_toBottomOf="@+id/semester_input_spinner" />
+
+
+    <Spinner
+        android:id="@+id/group_input_spinner"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height_size"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/tiny_margin"
+        android:layout_marginEnd="@dimen/big_margin"
+        app:boxStrokeColor="@color/whitey"
+        app:layout_constraintStart_toStartOf="@+id/textView88"
+        app:layout_constraintTop_toBottomOf="@+id/textView88" />
+
+
 
 
     <ImageView
@@ -158,37 +169,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        tools:text="Omar Khalid"
         android:textColor="@color/whitey"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/profileImage"
         app:layout_constraintStart_toStartOf="@+id/profileImage"
-        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+        app:layout_constraintTop_toBottomOf="@+id/profileImage"
+        tools:text="Omar Khalid" />
 
     <TextView
         android:id="@+id/studentYearProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        tools:text="Year 4"
         android:textColor="@color/whitey"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/studentNameProfileText"
         app:layout_constraintStart_toStartOf="@+id/studentNameProfileText"
-        app:layout_constraintTop_toBottomOf="@+id/studentNameProfileText" />
+        app:layout_constraintTop_toBottomOf="@+id/studentNameProfileText"
+        tools:text="Year 4" />
 
-    <Button
-        android:id="@+id/chnagePasswordBtn"
-        android:layout_width="365dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="76dp"
-        android:background="@drawable/button_shape_sec"
-        android:text="Change Password"
-        android:textSize="@dimen/_16sdp"
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/double_big_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/tiny_margin"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <Button
+            android:id="@+id/changePasswordBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_size"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_shape"
+            android:text="Change Password"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_size"
+            android:layout_margin="@dimen/small_margin"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/button_shape"
+            app:backgroundTint="#E9B51E04" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

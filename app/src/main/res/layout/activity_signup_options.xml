@@ -33,7 +33,7 @@
     <LinearLayout
         android:id="@+id/login_btn_container"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_marginEnd="@dimen/small_margin"
         android:orientation="vertical"
@@ -45,7 +45,7 @@
         <Button
             android:id="@+id/signup_email_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_47sdp"
+            android:layout_height="@dimen/button_height_size"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/mid_margin"
             android:background="@drawable/button_shape"
@@ -58,7 +58,7 @@
         <Button
             android:id="@+id/signup_phone_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_47sdp"
+            android:layout_height="@dimen/button_height_size"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/mid_margin"
             android:background="@drawable/button_shape"
@@ -71,7 +71,7 @@
         <Button
             android:id="@+id/signup_google_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_47sdp"
+            android:layout_height="@dimen/button_height_size"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/mid_margin"
             android:background="@drawable/button_shape"

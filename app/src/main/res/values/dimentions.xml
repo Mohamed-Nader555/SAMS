@@ -27,7 +27,8 @@
     <dimen name="margin_small_start_end">@dimen/_10sdp</dimen>
 
 
-    <dimen name="button_height_size">@dimen/_55sdp</dimen>
+    <dimen name="button_height_size">@dimen/_47sdp</dimen>
+    <dimen name="big_button_height_size">@dimen/_55sdp</dimen>
 
 
 </resources>

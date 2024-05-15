@@ -31,7 +31,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Management Information System"
+                android:layout_margin="@dimen/tiny_margin"
+                android:textAlignment="center"
+                android:text="Programming"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_margin="@dimen/tiny_margin"
                 android:text="Dr.Heba Sabry"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -56,9 +59,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="8:00 am"
+                android:layout_margin="@dimen/tiny_margin"
                 app:layout_constraintEnd_toEndOf="@+id/doctorNameText"
-                app:layout_constraintHorizontal_bias="0.512"
-                app:layout_constraintStart_toStartOf="@+id/doctorNameText"
+                 app:layout_constraintStart_toStartOf="@+id/doctorNameText"
                 app:layout_constraintTop_toBottomOf="@+id/doctorNameText" />
 
             <TextView
@@ -66,6 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_margin="@dimen/tiny_margin"
                 android:text="Room 403"
                 app:layout_constraintEnd_toEndOf="@+id/courseTimeText"
                 app:layout_constraintStart_toStartOf="@+id/courseTimeText"

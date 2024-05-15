@@ -1,5 +1,7 @@
 package com.omar.sams.Models;
 
+import java.util.ArrayList;
+
 public class UserDataModel {
 
     //we will add a boolean to check if the user is prof or not and this boolean by default will be false  and we can edit it manually from the database in fire base
@@ -11,14 +13,12 @@ public class UserDataModel {
     String profileImage;
     String semester;
     String group;
-    Boolean isProf;
-    ProfessorDataModel professor;
-    StudentDataModel student;
+    ArrayList<StudentCoursesDataModel> studentCourses;
 
     public UserDataModel() {
     }
 
-    public UserDataModel(String userId, String fullName, String email, String phoneNumber, String password, String profileImage, String semester, String group, Boolean isProf, ProfessorDataModel professor, StudentDataModel student) {
+    public UserDataModel(String userId, String fullName, String email, String phoneNumber, String password, String profileImage, String semester, String group, ArrayList<StudentCoursesDataModel> studentCourses) {
         this.userId = userId;
         this.fullName = fullName;
         this.email = email;
@@ -27,9 +27,7 @@ public class UserDataModel {
         this.profileImage = profileImage;
         this.semester = semester;
         this.group = group;
-        this.isProf = isProf;
-        this.professor = professor;
-        this.student = student;
+        this.studentCourses = studentCourses;
     }
 
     public String getUserId() {
@@ -96,27 +94,11 @@ public class UserDataModel {
         this.group = group;
     }
 
-    public Boolean getProf() {
-        return isProf;
+    public ArrayList<StudentCoursesDataModel> getStudentCourses() {
+        return studentCourses;
     }
 
-    public void setProf(Boolean prof) {
-        isProf = prof;
-    }
-
-    public ProfessorDataModel getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(ProfessorDataModel professor) {
-        this.professor = professor;
-    }
-
-    public StudentDataModel getStudent() {
-        return student;
-    }
-
-    public void setStudent(StudentDataModel student) {
-        this.student = student;
+    public void setStudent(ArrayList<StudentCoursesDataModel> studentCourses) {
+        this.studentCourses = studentCourses;
     }
 }
