@@ -54,7 +54,7 @@ public class LoginEmailActivity extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.email_et);
         passwordEditText = findViewById(R.id.password_et);
-        emailInputLayout = findViewById(R.id.email_input_et);
+        emailInputLayout = findViewById(R.id.new_password_input_et);
         passwordInputLayout = findViewById(R.id.password_input_et);
 
         loginBtn = findViewById(R.id.login_email_btn);

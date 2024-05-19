@@ -101,4 +101,19 @@ public class UserDataModel {
     public void setStudent(ArrayList<StudentCoursesDataModel> studentCourses) {
         this.studentCourses = studentCourses;
     }
+
+    @Override
+    public String toString() {
+        return "UserDataModel{" +
+                "userId='" + userId + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", profileImage='" + profileImage + '\'' +
+                ", semester='" + semester + '\'' +
+                ", group='" + group + '\'' +
+                ", studentCourses=" + studentCourses +
+                '}';
+    }
 }

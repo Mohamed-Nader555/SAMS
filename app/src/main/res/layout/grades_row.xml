@@ -6,6 +6,7 @@
     android:padding="4dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/studentGradeCardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_4sdp"

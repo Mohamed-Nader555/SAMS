@@ -23,8 +23,9 @@
             android:id="@+id/numberText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.02"
+            android:layout_weight="0.01"
             android:gravity="center"
+            android:layout_marginStart="@dimen/_10sdp"
             android:text="#"
             android:textColor="@color/black"
             android:textSize="@dimen/_16sdp"
@@ -42,6 +43,7 @@
             android:textStyle="bold" />
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"

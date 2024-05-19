@@ -116,7 +116,7 @@ public class StudentDashboardActivity extends AppCompatActivity {
 
         setTimeAndDate();
 
-        mCustomProgress.showProgress(this, "Loading...", true);
+        mCustomProgress.showProgress(this, "Loading...", false);
 
 
         mUserRef.addValueEventListener(new ValueEventListener() {
@@ -124,7 +124,9 @@ public class StudentDashboardActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     userData = snapshot.getValue(UserDataModel.class);
-                    userNameTextView.setText("Hi, " + userData.getFullName());
+                    String[] nameParts = userData.getFullName().split(" ");
+                    String firstName = nameParts[0];
+                    userNameTextView.setText("Hi, " + firstName);
                     getAllCoursesData(userData.getSemester(), userData.getGroup());
                 }
             }
@@ -176,6 +178,7 @@ public class StudentDashboardActivity extends AppCompatActivity {
             }
         });
         coursesRecyclerView.setAdapter(coursesAdapter);
+        coursesAdapter.notifyDataSetChanged();
         mCustomProgress.hideProgress();
 
     }

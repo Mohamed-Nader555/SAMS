@@ -62,7 +62,7 @@ public class CoursesListAdapter extends RecyclerView.Adapter<CoursesListAdapter.
 
 
     public interface OnCourseClickListener {
-        void OnCourseClicked(int position, String orderKey);
+        void OnCourseClicked(int position, String courseId);
     }
 
 

@@ -153,8 +153,10 @@ public class LoginOptionsActivity extends AppCompatActivity {
                             Toast.makeText(LoginOptionsActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
                             mLoading.dismiss();
                             GoogleSaveData();
-                            startActivity(new Intent(LoginOptionsActivity.this, HelloActivity.class));
-                            finish();
+                            Intent helloPageIntent = new Intent(LoginOptionsActivity.this, HelloActivity.class);
+                            helloPageIntent.putExtra("isAdmin", false);
+                            helloPageIntent.putExtra("isConnected", true);
+                            startActivity(helloPageIntent);
                         } else {
                             SendEmailVerificationMessage();
                         }

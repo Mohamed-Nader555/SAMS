@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,14 +25,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.omar.sams.Auth.Signup.SignupEmailActivity;
 import com.omar.sams.Hello.HelloActivity;
 import com.omar.sams.Models.AttendanceDataModel;
 import com.omar.sams.Models.CourseDataModel;
-import com.omar.sams.Models.ProfessorDataModel;
 import com.omar.sams.Models.StudentCoursesDataModel;
 import com.omar.sams.Models.UserDataModel;
 import com.omar.sams.R;
+import com.omar.sams.Utils.CustomProgress;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,7 +50,8 @@ public class CompleteUserDataActivity extends AppCompatActivity {
     private DatabaseReference mCoursesRef;
     String groupSelected;
     String semesterSelected;
-    ArrayList<StudentCoursesDataModel> coursesList = new ArrayList<>();
+    private CustomProgress mCustomProgress = CustomProgress.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +71,17 @@ public class CompleteUserDataActivity extends AppCompatActivity {
         mCoursesRef = FirebaseDatabase.getInstance().getReference("Courses");
 
         Intent i = getIntent();
-        boolean isGoogle = i.getBooleanExtra("isGoogle",false);
+        boolean isGoogle = i.getBooleanExtra("isGoogle", false);
         String userName = i.getStringExtra("userName");
         String userEmail = i.getStringExtra("userEmail");
 
-        fullNameInputLayout = findViewById(R.id.full_name_input_et);
-        emailInputLayout = findViewById(R.id.email_input_et);
+        fullNameInputLayout = findViewById(R.id.current_password_input_et);
+        emailInputLayout = findViewById(R.id.new_password_input_et);
 
         fullNameEditText = findViewById(R.id.full_name_et);
         emailEditText = findViewById(R.id.email_et);
 
-        if(isGoogle){
+        if (isGoogle) {
             fullNameEditText.setText(userName);
             emailEditText.setText(userEmail);
         }
@@ -100,9 +101,7 @@ public class CompleteUserDataActivity extends AppCompatActivity {
                 if (validate()) {
                     semesterSelected = semesterSpinner.getSelectedItem().toString();
                     groupSelected = groupSpinner.getSelectedItem().toString();
-                    coursesList = initStudentCourses(semesterSelected, groupSelected);
-
-                saveAccountUserData();
+                    initStudentCourses(semesterSelected, groupSelected);
                 }
             }
         });
@@ -137,11 +136,12 @@ public class CompleteUserDataActivity extends AppCompatActivity {
     }
 
 
-    private void saveAccountUserData() {
+    private void saveAccountUserData(ArrayList<StudentCoursesDataModel> coursesList) {
 
         String currentUserID = mAuth.getCurrentUser().getUid();
         String currentPhoneNumber = mAuth.getCurrentUser().getPhoneNumber();
         UsersRef = FirebaseDatabase.getInstance().getReference("Users");
+        Log.e(TAG, "saveAccountData: " + coursesList.toString());
 
         final UserDataModel dataModel = new UserDataModel(currentUserID, fullNameEditText.getText().toString(), emailEditText.getText().toString(), currentPhoneNumber, "", "", semesterSelected, groupSelected, coursesList);
 
@@ -150,9 +150,12 @@ public class CompleteUserDataActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()) {
+                    mCustomProgress.hideProgress();
                     Toast.makeText(CompleteUserDataActivity.this, "Data Saved Successfully", Toast.LENGTH_LONG).show();
-                    Intent x = new Intent(CompleteUserDataActivity.this, HelloActivity.class);
-                    startActivity(x);
+                    Intent helloPageIntent = new Intent(CompleteUserDataActivity.this, HelloActivity.class);
+                    helloPageIntent.putExtra("isAdmin", false);
+                    helloPageIntent.putExtra("isConnected", true);
+                    startActivity(helloPageIntent);
                     finish();
                 } else {
                     String message = task.getException().getMessage();
@@ -226,7 +229,9 @@ public class CompleteUserDataActivity extends AppCompatActivity {
     }
 
 
-    private ArrayList<StudentCoursesDataModel> initStudentCourses(String userSemester, String userGroup) {
+    private void initStudentCourses(String userSemester, String userGroup) {
+
+        mCustomProgress.showProgress(CompleteUserDataActivity.this, "Loading...", false);
 
         ArrayList<StudentCoursesDataModel> studentCoursesList = new ArrayList<>();
 
@@ -256,6 +261,8 @@ public class CompleteUserDataActivity extends AppCompatActivity {
                             studentCoursesList.add(studentCoursesDataModel);
                         }
                     }
+                    saveAccountUserData(studentCoursesList);
+
                 }
             }
 
@@ -265,7 +272,6 @@ public class CompleteUserDataActivity extends AppCompatActivity {
             }
         });
 
-        return studentCoursesList;
     }
 
 

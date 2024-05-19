@@ -41,9 +41,9 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
-                android:id="@+id/logoImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/clubLogoImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_140sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -59,12 +59,12 @@
                 app:cardElevation="16dp"
                 app:cardMaxElevation="16dp"
                 app:contentPadding="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/logoImage"
+                app:layout_constraintBottom_toBottomOf="@+id/clubLogoImage"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logoImage">
+                app:layout_constraintTop_toBottomOf="@+id/clubLogoImage">
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/clubNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

@@ -135,10 +135,12 @@ public class SendOtpActivity extends AppCompatActivity {
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             } else if (!userData.getFullName().isEmpty() && !userData.getEmail().isEmpty()) {
-                                Intent intent = new Intent(SendOtpActivity.this, HelloActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            }
+
+                                Intent helloPageIntent = new Intent(SendOtpActivity.this, HelloActivity.class);
+                                helloPageIntent.putExtra("isAdmin", false);
+                                helloPageIntent.putExtra("isConnected", true);
+                                startActivity(helloPageIntent);
+                             }
 
 
                         }

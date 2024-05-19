@@ -161,32 +161,9 @@ public class VerifyOtpActivity extends AppCompatActivity {
 
                     FirebaseUser user = task.getResult().getUser();
                     final String currentUserID = user.getUid();
-                    mUsersRef = FirebaseDatabase.getInstance().getReference("Users");
-
-                    mUsersRef.child(currentUserID).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists())
-                                userData = snapshot.getValue(UserDataModel.class);
-
-                            if (userData.getFullName().isEmpty() || userData.getEmail().isEmpty()) {
-                                Intent intent = new Intent(VerifyOtpActivity.this, CompleteUserDataActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            } else if (!userData.getFullName().isEmpty() && !userData.getEmail().isEmpty()) {
-                                Intent intent = new Intent(VerifyOtpActivity.this, HelloActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            }
-
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    Intent intent = new Intent(VerifyOtpActivity.this, CompleteUserDataActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
                 } else {
                     Log.e("Sign in", "signInWithCredential:failure", task.getException());
                     Toast.makeText(VerifyOtpActivity.this, "The Verification Code is Invalid", Toast.LENGTH_SHORT).show();

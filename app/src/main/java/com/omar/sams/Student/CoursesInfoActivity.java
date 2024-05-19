@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.omar.sams.Models.CourseDataModel;
 import com.omar.sams.Models.StudentCoursesDataModel;
 import com.omar.sams.Models.UserDataModel;
+import com.omar.sams.Prof.ChooseGroupActivity;
+import com.omar.sams.Prof.ProfDashboardActivity;
 import com.omar.sams.R;
 import com.omar.sams.Utils.CustomProgress;
 
@@ -33,6 +36,7 @@ public class CoursesInfoActivity extends AppCompatActivity {
     private TextView mStudentCourseNameText, mStudentProfNameText, mStudentCourseTimeLocationText,
             mCourseInfoMidTermGradeText, mCourseInfoFinalGradeText, mCourseInfoGradeText;
     private Button mStudentAttendanceBtn, mStudentMaterialBtn;
+    ImageView back_btn;
 
     private EditText mDescriptionTextField;
 
@@ -85,7 +89,17 @@ public class CoursesInfoActivity extends AppCompatActivity {
         mStudentAttendanceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent attendanceIntent = new Intent(CoursesInfoActivity.this, AttendanceActivity.class);
+                attendanceIntent.putExtra("courseId", courseID);
+                startActivity(attendanceIntent);
+            }
+        });
 
+        back_btn = findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

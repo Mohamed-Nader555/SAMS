@@ -72,8 +72,8 @@ public class SignupEmailActivity extends AppCompatActivity {
         mLoading = new ProgressDialog(this);
         mCoursesRef = FirebaseDatabase.getInstance().getReference("Courses");
 
-        fullNameInputLayout = findViewById(R.id.full_name_input_et);
-        emailInputLayout = findViewById(R.id.email_input_et);
+        fullNameInputLayout = findViewById(R.id.current_password_input_et);
+        emailInputLayout = findViewById(R.id.new_password_input_et);
         passwordInputLayout = findViewById(R.id.password_input_et);
 
         fullNameEditText = findViewById(R.id.full_name_et);
@@ -141,7 +141,7 @@ public class SignupEmailActivity extends AppCompatActivity {
                 if (input.length() < 8) {
                     passwordInputLayout.setError("Short Password! Make it Longer!");
                 } else if (input.length() > 10) {
-                    passwordInputLayout.setError("Short Password! Make it Shorter!");
+                    passwordInputLayout.setError("Long Password! Make it Shorter!");
                 } else {
                     passwordInputLayout.setError(null);
                 }
@@ -166,7 +166,7 @@ public class SignupEmailActivity extends AppCompatActivity {
                 if (input.length() < 8) {
                     repeatPasswordEditText.setError("Short Password! Make it Longer!");
                 } else if (input.length() > 10) {
-                    repeatPasswordEditText.setError("Short Password! Make it Shorter!");
+                    repeatPasswordEditText.setError("Long Password! Make it Shorter!");
                 } else {
                     repeatPasswordEditText.setError(null);
                 }

@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_2">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/phone_number_input_login_et"
+            android:id="@+id/confirm_password_input_et"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_47sdp"
